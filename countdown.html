@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS Cadangan Keamanan -->
+    <style>
+        .countdown-card, .message-paper, .promise-card {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+        .count-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .count-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 70px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===============================
+FLOATING HEARTS
+=============================== -->
+<div id="hearts"></div>
+
+<!-- ===============================
+NAVBAR
+=============================== -->
+<header>
+    <nav class="navbar">
+        <div class="logo">⏳ Countdown</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="letter.html">Letter</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="countdown.html" class="active">Countdown</a></li>
+            <li><a href="reasons.html">Reasons</a></li>
+            <li><a href="surprise.html">Surprise</a></li>
+            <li><a href="end.html">The End</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ===============================
+HERO
+=============================== -->
+<section class="gallery-hero">
+    <div class="gallery-title" data-aos="fade-up">
+        <span>⏳ COUNTDOWN</span>
+        <h1>menunggguu waktuu kita bersamaaa</h1>
+    </div>
+</section>
+
+<!-- ===============================
+COUNTDOWN DISPLAY (Sudah Dihapus Judul Teks "Waktu Menunggu")
+=============================== -->
+<section class="countdown-section">
+    <div class="countdown-card" data-aos="zoom-in">
+        <div class="count-grid">
+            <div class="count-box">
+                <h1 id="days">00</h1>
+                <span>Hari</span>
+            </div>
+            <div class="count-box">
+                <h1 id="hours">00</h1>
+                <span>Jam</span>
+            </div>
+            <div class="count-box">
+                <h1 id="minutes">00</h1>
+                <span>Menit</span>
+            </div>
+            <div class="count-box">
+                <h1 id="seconds">00</h1>
+                <span>Detik</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================
+MESSAGE
+===================================== -->
+<section class="message-paper" data-aos="zoom-in">
+    <h2> for myy handsome boyfriend</h2>
+    <p> Sayangg aku slalu tungguinn kamuuuu sampaii kapanpunn, selamaa apapunn ituu akuu slaluu nungguuu kamuuu.</p>
+    <p> karena akuu yakinn kamuu akann datangg menemui akuu disinii sayangg jangann cariii ceweee lainn selainn akuu yaa sayanggg..</p>
+    <p> ku harapp kamuu dissana baikk baikk saja yaa sayanggkuu dika, dan jugaa jangann lupa jagaa hatii untukk kuu yyaa sayangggg ingat bahwa aku ada slaluu untukkmu disiniii asayanggg kuu gatengg naa akuu</p>
+</section>
+
+<!-- =====================================
+LOVE PROMISE
+===================================== -->
+<section class="promise-section">
+    <div class="promise-card" data-aos="fade-up">
+        <h2>janjiku untukmu</h2>
+        <p>Bagikuuu janji bukan cuma di muluttt sajaa sayaanggg, tapi dibuktikannn jugaaa lewattt tindakannn .</p>
+        <p>sayangg jangann khawatirrr akuu akannn tetap di siniiii tidak akan adaaa yangg lainnn, kamuu fkuss saja dengan masaa depan kamuu yaa sayangggg dan akuu harapp kitaa bisaa menjagaa hubungann kitaaa yaaa sayanggg selainn ituuu waktuuu jugaaaa boleh berjalan lama, tapiii ingatt bahwaa di hatikuuu cumaa adaaa dirimuu sayanggggkuuu dikaaa</p>
+    </div>
+</section>
+
+<!-- =====================================
+BUTTON NAVIGASI
+===================================== -->
+<section class="gallery-navigation" style="text-align: center; margin: 40px 0;">
+    <a href="video.html" class="hero-btn">🎥 Kembali ke Video</a>
+    <a href="reasons.html" class="hero-btn">Lanjut</a>
+</section>
+
+<!-- =====================================
+SCROLL TOP
+===================================== -->
+<button id="topBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- =====================================
+AOS SCRIPT
+===================================== -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1200,
+        once: true
+    });
+</script>
+
+<!-- =====================================
+LIVE COUNTDOWN SCRIPT (Terkunci Otomatis ke 2032)
+===================================== -->
+<script>
+    let countdownInterval;
+    const daysEl = document.getElementById("days");
+    const hoursEl = document.getElementById("hours");
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+
+    // Mengunci target tanggal secara absolut langsung ke 2032 tanpa input box
+    const targetDateString = "2032-01-01";
+    
+    startCountdown(targetDateString);
+
+    function startCountdown(dateString) {
+        if (countdownInterval) clearInterval(countdownInterval);
+
+        const targetTime = new Date(dateString + " 00:00:00").getTime();
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                daysEl.innerHTML = "00";
+                hoursEl.innerHTML = "00";
+                minutesEl.innerHTML = "00";
+                secondsEl.innerHTML = "00";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.innerHTML = days < 10 ? "0" + days : days;
+            hoursEl.innerHTML = hours < 10 ? "0" + hours : hours;
+            minutesEl.innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            secondsEl.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+        }
+
+        updateTimer();
+        countdownInterval = setInterval(updateTimer, 1000);
+    }
+</script>
+
+<!-- =====================================
+MAIN SCRIPT
+===================================== -->
+<script src="script.js"></script>
+</body>
+</html>

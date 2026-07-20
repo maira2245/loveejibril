@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@600;700&family=Gochi+Hand&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ===================================================
+        DESAIN JURNAL SPIRAL & GRID PAPER AESTHETIC
+        =================================================== */
+        .journal-container {
+            max-width: 650px;
+            margin: 40px auto;
+            background: #fdfbf7;
+            border-radius: 8px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            position: relative;
+            padding: 20px 25px 40px 25px;
+            border: 1px solid #e2ded4;
+        }
+
+        /* Ring Spiral di Bagian Atas Buku */
+        .spiral-rings {
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .ring {
+            width: 14px;
+            height: 30px;
+            background: linear-gradient(135deg, #4a4a4a, #1a1a1a, #666);
+            border-radius: 6px;
+            box-shadow: 2px 3px 5px rgba(0,0,0,0.3);
+        }
+
+        /* Area Header Jurnal (Date & Days) */
+        .journal-header-info {
+            font-family: 'Patrick Hand', cursive;
+            color: #1e293b;
+            margin-top: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #334155;
+            font-size: 1.2rem;
+        }
+
+        .date-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .days-circle {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+            font-weight: bold;
+        }
+
+        .circled-day {
+            border: 2px solid #991b1b;
+            border-radius: 50%;
+            padding: 0 5px;
+            color: #991b1b;
+        }
+
+        .title-tag {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-top: 5px;
+        }
+
+        /* Kertas Motif Grid / Kotak-Kotak */
+        .journal-grid-paper {
+            background-color: #fdfbf7;
+            background-image: 
+                linear-gradient(#e2e8f0 1px, transparent 1px),
+                linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+            padding: 25px 15px;
+            position: relative;
+            margin-top: 10px;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+        }
+
+        /* Layot 2 Kolom Atas (Doodle Teks + Foto Polaroid) */
+        .journal-top-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        /* Coretan Doodle Tangan Kiri */
+        .doodle-title-box {
+            font-family: 'Gochi Hand', cursive;
+            line-height: 1;
+        }
+
+        .doodle-big-title {
+            font-size: 2.6rem;
+            font-weight: bold;
+            color: #0f172a;
+            letter-spacing: -1px;
+        }
+
+        .doodle-sub-title {
+            font-size: 2.2rem;
+            color: #7e22ce; /* Warna ungu doodle */
+            margin-left: 10px;
+        }
+
+        .doodle-number {
+            font-size: 3.5rem;
+            font-family: 'Caveat', cursive;
+            font-weight: bold;
+            color: #0f172a;
+            margin: 5px 0;
+        }
+
+        /* Doodle Dialog & Ilustrasi */
+        .doodle-dialog {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .speech-bubble {
+            border: 1.5px solid #0f172a;
+            border-radius: 15px;
+            padding: 3px 12px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            width: fit-content;
+            background: rgba(255,255,255,0.8);
+        }
+
+        /* Frame Polaroid dengan Selotip */
+        .polaroid-frame {
+            background: #ffffff;
+            padding: 10px 10px 25px 10px;
+            box-shadow: 3px 8px 18px rgba(0,0,0,0.15);
+            transform: rotate(3deg);
+            position: relative;
+            border: 1px solid #e2e8f0;
+        }
+
+        .washi-tape {
+            position: absolute;
+            top: -12px;
+            left: 30%;
+            width: 70px;
+            height: 22px;
+            background: rgba(226, 215, 186, 0.75);
+            transform: rotate(-5deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .polaroid-frame img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .fingerprint-heart {
+            position: absolute;
+            bottom: -15px;
+            right: -10px;
+            font-size: 2.2rem;
+            color: #475569;
+            transform: rotate(-15deg);
+        }
+
+        /* Teks Utama dengan Highlight Pink Pastel */
+        .journal-body-text {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #0f172a;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(244, 114, 182, 0.35) 0%, rgba(244, 114, 182, 0.35) 100%);
+            padding: 0 4px;
+            border-radius: 3px;
+        }
+
+        /* Responsif HP */
+        @media (max-width: 600px) {
+            .journal-top-layout {
+                grid-template-columns: 1fr;
+            }
+            .journal-container {
+                padding: 15px;
+                margin: 20px 10px;
+            }
+            .polaroid-frame {
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="hearts"></div>
+
+<!-- NAVBAR -->
+<header>
+    <nav class="navbar">
+        <div class="logo">💌 Our Story</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="letter.html" class="active">Letter</a></li>
+            <li><a href="video.html">Video</a></li>
+            <li><a href="countdown.html">Countdown</a></li>
+            <li><a href="reasons.html">Reasons</a></li>
+            <li><a href="surprise.html">Surprise</a></li>
+            <li><a href="end.html">The End</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="gallery-hero">
+    <div class="gallery-title" data-aos="fade-up">
+        <span> LOVE LETTER</span>
+        <h1>A Letter Written Only For You ❤️</h1>
+    </div>
+</section>
+
+<!-- =====================================
+JURNAL SPIRAL AESTHETIC SECTION
+===================================== -->
+<div class="journal-container" data-aos="zoom-in">
+    
+    <!-- Ring Spiral Atas Buku -->
+    <div class="spiral-rings">
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+        <div class="ring"></div>
+    </div>
+
+    <!-- Header Tanggal & Hari -->
+    <div class="journal-header-info">
+        <div class="date-line">
+            <span>date</span> <strong>16 / 07 / 2025</strong>
+        </div>
+        <div class="days-circle">
+            <span>m</span> <span>a</span> <span>l</span> <span>o</span> <span class="circled-day">f</span> <span>k</span> <span>a</span>
+        </div>
+        <div class="title-tag">maa lovee dikaa</div>
+    </div>
+
+    <!-- Kertas Kotak-Kotak Grid Utama -->
+    <div class="journal-grid-paper">
+        
+        <!-- Tata Letak Atas: Doodle Teks + Foto Polaroid -->
+        <div class="journal-top-layout">
+            
+            <!-- Sisi Kiri: Doodle Tulisan Tangan & Ilustrasi -->
+            <div class="doodle-title-box">
+                <div class="doodle-big-title">I LOVE U</div>
+                <div class="doodle-sub-title">LOVE LETTER</div>
+                <div class="doodle-number">1010 ✨</div>
+                
+                <div class="doodle-dialog">
+                    <div class="speech-bubble">so what's your answer? 🎵</div>
+                    <div class="speech-bubble" style="margin-left: 40px; background: #fbcfe8;">yes! ❤️</div>
+                </div>
+            </div>
+
+            <!-- Sisi Kanan: Foto Polaroid Berisolasi Selotip -->
+            <div class="polaroid-frame">
+                <div class="washi-tape"></div>
+                <img src="lovee.jpeg" alt="Our Memory">
+                <div class="fingerprint-heart">👣❤️</div>
+            </div>
+
+        </div>
+
+        <!-- Sisi Bawah: Isi Surat -->
+        <div class="journal-body-text">
+            From the bottom of my heart, I am truly grateful to have met you. 
+            Our journey may not have always been smooth, <span class="highlight">but your presence gave me a place to feel truly valued and prioritized.</span> Because of you, I have learned so many meaningful lessons that I will carry with me wherever I go.
+            
+            <br><br>
+            
+            You taught me <span class="highlight">about patience, maturity, and how to express my feelings honestly.</span> These precious values were things I never fully understood until you came into my life. If I could turn back time, I would still choose the exact same path without a single regret.
+            
+            <br><br>
+            
+            <span class="highlight">Every single moment and memory we shared will always hold a special place</span> in my life. Thank you for being such a beautiful part of my story. ❤️
+        </div>
+
+    </div>
+
+</div>
+
+<!-- QUOTE CARDS -->
+<section class="quote-section">
+    <div class="quote-card" data-aos="zoom-in">
+        <h2>❤️ Favorite Quote ❤️</h2>
+        <p>"Some people cross our paths not just to stay, but to change the way we see the world."</p>
+    </div>
+    <div class="quote-card" data-aos="zoom-in" data-aos-delay="200">
+        <h2>🤍 Little Promise 🤍</h2>
+        <p>"No matter what tomorrow brings, these beautiful memories will always be safe in my heart."</p>
+    </div>
+</section>
+
+<!-- TOMBOL NAVIGASI -->
+<section class="gallery-navigation" style="text-align: center; margin: 40px 0;">
+    <a href="index.html" class="hero-btn"> Back To Home</a>
+    <a href="video.html" class="hero-btn"> Continue to Video</a>
+</section>
+
+<button id="topBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1200, once: true });
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

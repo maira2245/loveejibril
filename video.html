@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Favorite Video ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS Tambahan Khusus untuk Mengatur Ukuran Video Besar & Sentralisasi -->
+    <style>
+        .cinema-room {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            max-width: 950px; /* Lebar maksimal area bioskop mini */
+            margin: 0 auto !important; /* Memaksa elemen berada di tengah */
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .screen {
+            width: 100% !important;
+            max-width: 850px; /* Ukuran lebar layar utama video */
+            margin: 0 auto !important;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Rasio aspek sinema 16:9 widescreen */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            background: #000;
+        }
+        
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Menjaga proporsi video agar tidak melar */
+        }
+
+        .cinema-section, .message-paper, .quote-card {
+            opacity: 1 !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<div id="hearts"></div>
+
+<header>
+    <nav class="navbar">
+        <div class="logo"> Our Video</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="letter.html">Letter</a></li>
+            <li><a href="video.html" class="active">Video</a></li>
+            <li><a href="countdown.html">Countdown</a></li>
+            <li><a href="reasons.html">Reasons</a></li>
+            <li><a href="surprise.html">Surprise</a></li>
+            <li><a href="end.html">The End</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="gallery-hero">
+    <div class="gallery-title" data-aos="fade-up">
+        <span>🎥 OUR FAVORITE VIDEO</span>
+        <h1>One Video, A Thousand Feelings</h1>
+        <p>
+            Walaupun kita berjauhan, aku berharap video ini bisa sedikit mewakili perasaan yang selama ini ingin aku sampaikan. 🤍
+        </p>
+    </div>
+</section>
+
+<!-- =====================================
+MINI CINEMA (Area Video Center & Widescreen)
+===================================== -->
+<section class="cinema-section" style="text-align: center; padding: 40px 20px;">
+    <div class="section-title" data-aos="fade-up">
+        <span>LAGU UNTUKMU :3</span>
+        <h2>Watching Together, Even From Afar</h2>
+        <p>
+            kuharap kamu suka dengan lagu ini, karena aku mememilih lagu ini untukmu, semoga setiap kali kamu mendengarkan lagunyaa, kamu slalu ingat aku ada untukmuu sayangggg
+        </p>
+    </div>
+
+    <!-- Container Bioskop Utama yang Berada di Tengah -->
+    <div class="cinema-room" data-aos="zoom-in">
+        <div class="light left-light"></div>
+        <div class="light right-light"></div>
+        <div class="curtain left-curtain"></div>
+        <div class="curtain right-curtain"></div>
+        
+        <div class="screen">
+            <div class="video-wrapper">
+                <!-- Video Lokal Hasil Unduhan -->
+                <video controls controlsList="nodownload" poster="../img/photo2.jpg">
+                    <source src="videoplayback.mp4" type="video/mp4">
+                    Browser kamu tidak mendukung pemutaran video offline.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-card" data-aos="fade-up" style="box-shadow: none; background: transparent; text-align: center; margin-top: 40px;">
+        <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6;">
+           kamuu tauuu? setiapp aku dengarr laguuu ini akuu slaluu ingattt kamuu tauu sayanggg, ingat adaa akuu yangg slaluu beradaaa disiniii untukkmuu saayanggg🤍
+        </p>
+    </div>
+</section>
+
+<section class="after-video">
+    <div class="message-paper" data-aos="fade-up">
+        <h2>setelah mendengarkan lagunya</h2>
+        <p>Aku berharap, setelah kamuuu menonton/mendengarkan ini, kamu bisa merasakan betapa bersyukurnyaaaa aku karena bertemuu denganmuuuu sayaangggg.</p>
+        <p>Walaupun kita hanya bisa bertemu lewat layar, bagiku, setiap detik bersamamu tetap menjadi kenangan yang sangat berhargaaa buatt akuuu🤍</p>
+        <p>Semoga suatu hari nanti, kita bisa menonton film favorit kita di tempat yang samaaaa yaaa. Bukan lagiiii melalui layarrrr virtuall ❤️</p>
+    </div>
+</section>
+
+<section class="quote-section">
+    <div class="quote-card" data-aos="fade-right">
+        <h2>🎬 Favorite Quote</h2>
+        <p>"Distance never changes how much someone means."</p>
+    </div>
+    <div class="quote-card" data-aos="zoom-in">
+        <h2>My Little Dream</h2>
+        <p>One day, we won't need a screen to see each other.</p>
+    </div>
+    <div class="quote-card" data-aos="fade-left">
+        <h2>Promise</h2>
+        <p>No matter how far, I'll always choose you.</p>
+    </div>
+</section>
+
+<section class="gallery-navigation" style="text-align: center; margin: 40px 0;">
+    <a href="letter.html" class="hero-btn"> Back To Letter</a>
+    <a href="countdown.html" class="hero-btn">Continue</a>
+</section>
+
+<button id="topBtn">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1200,
+        once: true
+    });
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

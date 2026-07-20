@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The End ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Custom Style untuk Mengubah Tampilan Menjadi Scrapbook Photo Strip & Amplop Pink -->
+<style>
+    .scrapbook-end-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 40px 30px;
+        background: #fbcfe8; /* Pink bertekstur lembut */
+        background-image: radial-gradient(#f472b6 1px, transparent 1px);
+        background-size: 20px 20px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        position: relative;
+        overflow: hidden;
+        border: 4px solid #ffffff;
+    }
+
+    /* Element Hiasan Atas (Stamp & Chat Bubbles) */
+    .top-decorations {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .chat-bubbles {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .bubble {
+        background: #ffffff;
+        color: #ec4899;
+        font-family: 'Caveat', cursive;
+        font-size: 1.4rem;
+        padding: 6px 18px;
+        border-radius: 20px;
+        display: inline-block;
+        box-shadow: 2px 4px 10px rgba(0,0,0,0.05);
+        border: 2px solid #f472b6;
+        width: fit-content;
+    }
+
+    .stamp-badge {
+        width: 65px;
+        height: 80px;
+        background: #fdf2f8;
+        border: 2px dashed #db2777;
+        padding: 5px;
+        text-align: center;
+        font-size: 0.7rem;
+        color: #9d174d;
+        transform: rotate(8deg);
+        box-shadow: 2px 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .stamp-badge i {
+        font-size: 1.8rem;
+        color: #db2777;
+        margin-top: 8px;
+    }
+
+    /* Layout Utama 2 Kolom (Photo Strip & Amplop Surat) */
+    .scrapbook-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.3fr;
+        gap: 30px;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    /* Photo Strip / Photobooth Frame */
+    .photo-strip {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        transform: rotate(-3deg);
+        transition: transform 0.3s ease;
+    }
+
+    .photo-strip:hover {
+        transform: rotate(0deg) scale(1.02);
+    }
+
+    .strip-item {
+        width: 100%;
+        height: 160px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        border-radius: 4px;
+        background: #18181b;
+    }
+
+    .strip-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(110%); /* Efek Photobooth Hitam Putih Sesuai Gambar */
+    }
+
+    .strip-footer {
+        background: #fbcfe8;
+        color: #ffffff;
+        text-align: center;
+        padding: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+
+    /* Amplop & Surat Pink */
+    .envelope-card {
+        background: #f472b6;
+        padding: 25px 20px 20px 20px;
+        border-radius: 16px;
+        position: relative;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        transform: rotate(2deg);
+    }
+
+    .heart-seal {
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #dc2626;
+        color: #ffffff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 5;
+    }
+
+    .letter-paper-inside {
+        background: #ffffff;
+        padding: 25px 20px;
+        border-radius: 10px;
+        font-family: 'Caveat', cursive;
+        font-size: 1.35rem;
+        color: #1f2937;
+        line-height: 1.5;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+    }
+
+    .letter-paper-inside p {
+        margin-bottom: 12px;
+        text-align: left;
+    }
+
+    /* Responsif untuk Tampilan HP */
+    @media (max-width: 768px) {
+        .scrapbook-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .photo-strip {
+            transform: rotate(0deg);
+            max-width: 320px;
+            margin: 0 auto;
+        }
+        .envelope-card {
+            transform: rotate(0deg);
+        }
+        .scrapbook-end-container {
+            padding: 25px 15px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<!-- ===========================
+FLOATING HEART
+=========================== -->
+
+<div id="hearts"></div>
+
+<!-- ===========================
+NAVBAR
+=========================== -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+❤️ The End
+
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="letter.html">Letter</a></li>
+
+<li><a href="video.html">Video</a></li>
+
+<li><a href="countdown.html">Countdown</a></li>
+
+<li><a href="reasons.html">Reasons</a></li>
+
+<li><a href="surprise.html">Surprise</a></li>
+
+<li><a href="end.html" class="active">The End</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- ===========================
+HERO
+=========================== -->
+
+<section class="gallery-hero">
+
+<div class="gallery-title" data-aos="zoom-in">
+
+<span>
+
+🌹 THE END
+
+</span>
+
+<h1>
+
+This Is Not The End ❤️
+
+</h1>
+
+<p>
+
+Ini hanyalah akhir dari website kecil ini, bukan akhir dari cerita kita. 🤍
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ===========================
+SCRAPBOOK PHOTOSTRIP & LETTER CONTAINER
+=========================== -->
+<div class="scrapbook-end-container" data-aos="zoom-in">
+    
+    <!-- Bagian Atas: Chat Bubbles & Perangko -->
+    <div class="top-decorations">
+        <div class="chat-bubbles">
+            <div class="bubble">LOVE YOU 💬</div>
+            <div class="bubble">❤️❤️❤️❤️</div>
+        </div>
+        <div class="stamp-badge">
+            POST CARD
+            <i class="fa-solid fa-heart-pulse"></i>
+        </div>
+    </div>
+
+    <!-- Grid Utama: Photobooth Strip di Kiri + Amplop Surat di Kanan -->
+    <div class="scrapbook-grid">
+        
+        <!-- Photo Strip Monokrom (Photobooth 3 Foto) -->
+        <div class="photo-strip" data-aos="fade-right">
+            <div class="strip-item">
+                <img src="../img/photo1.jpg" alt="Moment 1">
+            </div>
+            <div class="strip-item">
+                <img src="../img/photo2.jpg" alt="Moment 2">
+            </div>
+            <div class="strip-item">
+                <img src="../img/photo3.jpg" alt="Moment 3">
+            </div>
+            <div class="strip-footer">
+                LOVE ❤
+            </div>
+        </div>
+
+        <!-- Amplop Pink dengan Surat di Dalamnya -->
+        <div class="envelope-card" data-aos="fade-left">
+            <div class="heart-seal">❤️</div>
+            <div class="letter-paper-inside">
+                <p>
+                    Baby, I don't know how you do it, but you make my days feel lighter just by being here. You're the calm I never knew I needed and the warmth I always look for.
+                </p>
+                <p>
+                    I just want you to know that I'm really happy with you, and I want to keep choosing you every single day.
+                </p>
+                <p style="font-weight: 700; color: #db2777; margin-bottom: 0;">
+                    I love you, more than I ever say out loud. ❤️
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- =====================================
+THANK YOU
+===================================== -->
+
+<section class="thank-you">
+
+<div class="message-paper" data-aos="fade-up">
+
+<h2>
+
+Thank You ❤️
+
+</h2>
+
+<p>
+
+Terima kasih karena sudah menjadi bagian terindah dalam hidupku.
+
+</p>
+
+<p>
+
+Semoga website kecil ini bisa menjadi salah satu kenangan yang selalu membuatmu tersenyum. 🤍
+
+</p>
+
+<h3>
+
+My beloved boyfriend, i love you, always.
+
+</h3>
+
+</div>
+
+</section>
+
+<!-- =====================================
+BUTTON
+===================================== -->
+
+<section class="gallery-navigation" style="text-align: center; margin: 40px 0;">
+
+<a href="surprise.html" class="hero-btn">
+
+ Back To Surprise
+
+</a>
+
+<a href="index.html" class="hero-btn">
+
+ Start Again
+
+</a>
+
+</section>
+
+<!-- =====================================
+FOOTER
+===================================== -->
+
+<footer class="footer">
+
+<p>
+
+made by syaa cantikkk
+
+</p>
+<p>
+
+© 2026 Our Story (Loveedikaa)
+
+</p>
+
+</footer>
+
+<!-- =====================================
+SCROLL TOP
+===================================== -->
+
+<button id="topBtn">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- =====================================
+AOS & SCRIPTS
+===================================== -->
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+
+duration:1200,
+
+once:true
+
+});
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

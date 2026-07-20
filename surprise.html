@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Special Surprise ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Style Tambahan untuk Desain Kado Hitam & Kartu Pesan Vintage -->
+<style>
+    .surprise-hero-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 80vh; 
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* ===================================================
+    DESAIN KOTAK KADO HITAM 3D
+    =================================================== */
+    .gift-box-wrapper {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 40px;
+        cursor: pointer;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .gift-box-wrapper:hover {
+        transform: scale(1.1) rotate(3deg);
+    }
+
+    .black-box-body {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #1a1a1a;
+        border-radius: 8px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.05);
+        border-bottom: 4px solid #0d0d0d;
+    }
+
+    .ribbon-v, .ribbon-h {
+        position: absolute;
+        background: #2b2b2b;
+        box-shadow: inset 0 0 5px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
+        z-index: 2;
+    }
+
+    .ribbon-v {
+        left: 50%;
+        top: 0;
+        width: 35px;
+        height: 100%;
+        transform: translateX(-50%);
+    }
+
+    .ribbon-h {
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 35px;
+        transform: translateY(-50%);
+    }
+
+    .ribbon-bow-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 120px;
+        z-index: 3;
+    }
+
+    .bow-loop-left, .bow-loop-right {
+        position: absolute;
+        width: 55px;
+        height: 35px;
+        background: #2b2b2b;
+        border-radius: 50% 50% 10% 50%;
+        top: 42px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    }
+
+    .bow-loop-left {
+        left: 5px;
+        transform: rotate(-15deg);
+    }
+
+    .bow-loop-right {
+        right: 5px;
+        transform: scaleX(-1) rotate(-15deg);
+    }
+
+    .bow-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 28px;
+        height: 28px;
+        background: #333333;
+        border-radius: 6px;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.5);
+        z-index: 4;
+    }
+
+    .bow-tail-left, .bow-tail-right {
+        position: absolute;
+        width: 15px;
+        height: 50px;
+        background: #2b2b2b;
+        top: 65px;
+        z-index: 1;
+        box-shadow: 2px 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .bow-tail-left {
+        left: 35px;
+        transform: rotate(25deg);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%);
+    }
+
+    .bow-tail-right {
+        right: 35px;
+        transform: rotate(-25deg);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%);
+    }
+
+    .gift-hint {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.3rem;
+        color: #ff4d6d;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    /* ===================================================
+    KARTU SURAT ELEGANT (SESUAI GAMBAR REFERENSI)
+    =================================================== */
+    .vintage-card-wrapper {
+        max-width: 650px;
+        margin: 40px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        color: #2b2b2b;
+        font-family: 'Merriweather', serif;
+        line-height: 1.8;
+        text-align: left;
+    }
+
+    .card-photo {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        filter: grayscale(100%); /* Efek Hitam Putih Estetis Sesuai Foto */
+        margin-bottom: 30px;
+        border-radius: 2px;
+    }
+
+    .card-paragraph {
+        font-size: 1.02rem;
+        margin-bottom: 20px;
+        color: #333333;
+        text-align: justify;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 35px;
+    }
+
+    .card-signature-left {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        color: #2b2b2b;
+        line-height: 1.4;
+    }
+
+    .card-signature-right {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.6rem;
+        color: #555555;
+    }
+
+    /* Partikel Hati */
+    .burst-heart {
+        position: fixed;
+        font-size: 28px;
+        pointer-events: none;
+        z-index: 9999;
+        animation: flyUpAndFade 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    @keyframes flyUpAndFade {
+        0% {
+            transform: translate(0, 0) scale(0) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(var(--x), var(--y)) scale(var(--scale)) rotate(var(--rotate));
+            opacity: 0;
+        }
+    }
+
+    /* Sembunyikan bagian dalam sebelum kado diklik */
+    #hiddenSurpriseContent {
+        display: none;
+    }
+
+    @media (max-width: 600px) {
+        .vintage-card-wrapper {
+            padding: 25px 20px;
+            margin: 20px 15px;
+        }
+        .card-paragraph {
+            font-size: 0.95rem;
+        }
+        .card-footer {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+        }
+    }
+</style>
+
+</head>
+
+<body>
+
+<div id="hearts"></div>
+
+<!-- ===========================
+NAVBAR
+=========================== -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+ Surprise
+
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="letter.html">Letter</a></li>
+
+<li><a href="video.html">Video</a></li>
+
+<li><a href="countdown.html">Countdown</a></li>
+
+<li><a href="reasons.html">Reasons</a></li>
+
+<li><a href="surprise.html" class="active">Surprise</a></li>
+
+<li><a href="end.html">The End</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<!-- ===========================
+KOTAK KADO HITAM BERPITA
+=========================== -->
+<div class="surprise-hero-container">
+    <div class="gift-box-wrapper" id="blackGift" data-aos="zoom-in">
+        <div class="black-box-body">
+            <div class="ribbon-v"></div>
+            <div class="ribbon-h"></div>
+        </div>
+        <div class="ribbon-bow-container">
+            <div class="bow-loop-left"></div>
+            <div class="bow-loop-right"></div>
+            <div class="bow-center"></div>
+            <div class="bow-tail-left"></div>
+            <div class="bow-tail-right"></div>
+        </div>
+    </div>
+    <p class="gift-hint" id="giftHint" data-aos="fade-up">Buka Hadiah Spesialmu ❤️</p>
+</div>
+
+<!-- =====================================
+KARTU PESAN RAHASIA & TOMBOL NAVIGASI
+===================================== -->
+<div id="hiddenSurpriseContent">
+    <section class="vintage-card-wrapper">
+        <!-- Foto Hitam Putih (Bisa diganti fotonya sesuai keinginan) -->
+        <img src="lovee.jpeg" alt="Our Special Moment" class="card-photo">
+
+        <p class="card-paragraph">
+            With you, I felt things I thought I no longer can. I cared, I have loved more than I think I am capable of. Not less, not too much, just enough to inspire me to keep living the life I thought was hopeless. I never liked pink and as cliché as it sounds, you brought new purpose in my dull world that in even in my blues and greys— watching you made it seemed more colorful, pinker, brighter. You have a certain light within you that even from afar I will never not recognize. Everything about you is just so soft, so tender, so gentle, so full of love and wonders, and I hope you stay that way.
+        </p>
+
+        <p class="card-paragraph">
+            I am not a firm believer, but I'd wish to all gods in this realm that may you always possess the gentleness a sad soul craves. May you be the happiest person walking on earth like no other. And even if you're not, may you always find the courage to continue just like how you give purpose in me, a fellow passerby in this lifetime.
+        </p>
+
+        <div class="card-footer">
+            <div class="card-signature-left">
+                I love you, I loved you, I love you and I will.<br>
+                Today, tomorrow, forever, always.
+            </div>
+            <div class="card-signature-right">
+                ur lovee
+            </div>
+        </div>
+    </section>
+
+    <!-- BUTTON NAVIGASI BAWAH (KEMBALI KE SEBELUMNYA & LANJUT KELUAR) -->
+    <section class="gallery-navigation" style="text-align: center; margin: 40px 0;">
+        <a href="reasons.html" class="hero-btn"> Back To Reasons</a>
+        <a href="end.html" class="hero-btn"> Continue To The End</a>
+    </section>
+</div>
+
+<!-- =====================================
+SCROLL TOP
+===================================== -->
+
+<button id="topBtn">
+
+<i class="fa-solid fa-arrow-up"></i>
+
+</button>
+
+<!-- =====================================
+AOS SCRIPT
+===================================== -->
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+
+AOS.init({
+
+duration:1200,
+
+once:true
+
+});
+
+/* ===================================================
+LOGIC BUKA KADO & MUNCULNYA KARTU PESAN MONOKROM
+=================================================== */
+
+const blackGift = document.getElementById("blackGift");
+const giftHint = document.getElementById("giftHint");
+const hiddenContent = document.getElementById("hiddenSurpriseContent");
+
+blackGift.onclick = function(e) {
+    blackGift.style.transform = "scale(0.8) rotate(-5deg)";
+    blackGift.style.transition = "0.2s ease-in";
+
+    const rect = blackGift.getBoundingClientRect();
+    const burstX = rect.left + rect.width / 2;
+    const burstY = rect.top + rect.height / 2;
+
+    // Ledakan Love Bertaburan
+    createHeartBurst(burstX, burstY);
+
+    setTimeout(function() {
+        blackGift.style.display = "none";
+        giftHint.style.display = "none";
+
+        hiddenContent.style.display = "block";
+        hiddenContent.style.animation = "fadeIn 1.5s ease-in-out";
+
+        // Scroll otomatis ke kartu pesan
+        window.scrollTo({
+            top: hiddenContent.offsetTop - 40,
+            behavior: "smooth"
+        });
+
+    }, 300);
+};
+
+// Partikel Love Bertaburan
+function createHeartBurst(x, y) {
+    const heartTypes = ["❤️", "🤍", "💖", "💝", "💕", "💘", "✨"];
+    const particleCount = 60;
+
+    for (let i = 0; i < particleCount; i++) {
+        const heart = document.createElement("div");
+        heart.className = "burst-heart";
+        heart.innerText = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+        
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = 100 + Math.random() * 300; 
+        
+        const targetX = Math.cos(angle) * velocity + (Math.random() * 80 - 40);
+        const targetY = Math.sin(angle) * velocity - (150 + Math.random() * 200); 
+
+        const scale = 0.5 + Math.random() * 1.6;
+        const rotate = Math.random() * 360 + "deg";
+
+        heart.style.setProperty("--x", targetX + "px");
+        heart.style.setProperty("--y", targetY + "px");
+        heart.style.setProperty("--scale", scale);
+        heart.style.setProperty("--rotate", rotate);
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 2000);
+    }
+}
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
